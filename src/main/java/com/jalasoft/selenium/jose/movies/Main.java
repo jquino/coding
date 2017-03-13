@@ -1,10 +1,19 @@
 package com.jalasoft.selenium.jose.movies;
 
-import com.jalasoft.selenium.jose.movies.NewRelease;
-import com.jalasoft.selenium.jose.movies.Regular;
+/**
+ * Main class.
+ */
+public final class Main {
 
-public class Main {
-    public static void main(String[] args) {
+    /**
+     * This is the constructor.
+     */
+    private Main() { }
+    /**
+     * This is the main method.
+     * @param args It receives some arguments.
+     */
+    public static void main(final String[] args) {
         Customer customer = new Customer("Test");
         customer.addRental(new Rental(new NewRelease("The Revenant"), 2));
         customer.addRental(new Rental(new Regular("Terminator"), 2));

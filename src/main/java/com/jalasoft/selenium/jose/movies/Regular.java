@@ -1,18 +1,27 @@
 package com.jalasoft.selenium.jose.movies;
 
-import com.jalasoft.selenium.jose.movies.Movie;
-
 /**
  * Created by Jose Rioja on 3/7/2017.
  */
 public class Regular extends Movie {
-    private static final int BASE_PRICE = 2;
+    public static final double BASE_RENTAL_FEE = 2;
+    public static final int RENTAL_PERIOD = 2;
+    public static final double DAILY_RENTAL_RATE = 1.5;
 
-    public Regular(String movieTitle) {
+    /**
+     * This is the constructor.
+     * @param movieTitle It is the title of the movie.
+     */
+    public Regular(final String movieTitle) {
         super(movieTitle);
     }
 
-    double calculateAmount(int daysRented) {
-        return (daysRented > 2) ? BASE_PRICE + ((daysRented - 3) * 1.5) : BASE_PRICE;
+    /**
+     * This method calculates the amount.
+     * @param daysRented It is the number of days that were rented.
+     * @return returns the calculated amount.
+     */
+    double calculateAmount(final int daysRented) {
+        return BASE_RENTAL_FEE + ((daysRented > RENTAL_PERIOD) ? (daysRented - RENTAL_PERIOD) * DAILY_RENTAL_RATE : 0);
     }
 }

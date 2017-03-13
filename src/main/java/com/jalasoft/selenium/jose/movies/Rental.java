@@ -1,19 +1,35 @@
 package com.jalasoft.selenium.jose.movies;
 
+/**
+ * Rental class.
+ */
 class Rental {
-    private Movie _movie;
-    private int _daysRented;
+    private Movie movie;
+    private int daysRented;
 
-    public Rental(Movie movie, int daysRented) {
-        _movie = movie;
-        _daysRented = daysRented;
+    /**
+     * Rental constructor.
+     * @param movie It is a movie object.
+     * @param daysRented It is the days that the movie was rented.
+     */
+    Rental(final Movie movie, final int daysRented) {
+        this.movie = movie;
+        this.daysRented = daysRented;
     }
 
+    /**
+     * This method gets the number of rented days.
+     * @return returns the number of rented days.
+     */
     public int getDaysRented() {
-        return _daysRented;
+        return daysRented;
     }
 
+    /**
+     * This method gets the movie object.
+     * @return returns the movie object.
+     */
     public Movie getMovie() {
-        return _movie;
+        return movie;
     }
 }
