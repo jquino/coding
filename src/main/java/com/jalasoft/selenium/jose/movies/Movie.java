@@ -1,35 +1,11 @@
 package com.jalasoft.selenium.jose.movies;
 
 /**
- * This is the Movie class.
+ * Updated by Jose Rioja on 3/21/2017.
  */
 public abstract class Movie {
-    private String title;
-    private int priceCode;
-
-    /**
-     * This method assigns a title to the movie.
-     * @param title It is the title of the movie.
-     */
-    public Movie(final String title) {
-        this.title = title;
-    }
-
-    /**
-     * This method gets the price of the code.
-     * @return returns the price of the code.
-     */
-    public int getPriceCode() {
-        return priceCode;
-    }
-
-    /**
-     * This method sets the price of the code.
-     * @param arg It is the price of the code.
-     */
-    public void setPriceCode(final int arg) {
-        priceCode = arg;
-    }
+    protected static final int FREQUENT_RENTER_POINTS = 1;
+    protected String title;
 
     /**
      * This method gets the title of the movie.
@@ -52,6 +28,6 @@ public abstract class Movie {
      * @return returns the calculated frequent renter points.
      */
     public int calculateFrequentRenterPoints(final int daysRented) {
-        return 1;
+        return FREQUENT_RENTER_POINTS;
     }
 }

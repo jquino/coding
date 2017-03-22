@@ -1,14 +1,14 @@
 package com.jalasoft.selenium.jose.movies;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by Jose Rioja.
+ * Updated by Jose Rioja on 3/21/2017.
  */
 class Customer {
     private String name;
-    private Vector rentals = new Vector();
+    private List<Rental> rentals = new ArrayList<>();
 
     /**
      * @param name This is the customer name.
@@ -18,11 +18,11 @@ class Customer {
     }
 
     /**
-     * This method add rentals values to the vector.
+     * This method add rentals object to the vector.
      * @param arg This is a rental value that will be added to the vector.
      */
     public void addRental(final Rental arg) {
-        rentals.addElement(arg);
+        rentals.add(arg);
     }
 
     /**
@@ -38,31 +38,27 @@ class Customer {
      * @return returns a string.
      */
     public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
-        Enumeration rentals = this.rentals.elements();
-//        String result = "Rental Record for " + getName() + "\n";
-        StringBuffer result = new StringBuffer("");
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            //determine amounts for each line
-            double thisAmount = each.getMovie().calculateAmount(each.getDaysRented());
-            // add frequent renter points and add bonus for a two day new release rental
-            frequentRenterPoints += each.getMovie().calculateFrequentRenterPoints(each.getDaysRented());
-            //show figures for this rental
-//            result += "\t" + each.getMovie().getTitle() + "\t"
-//                    + String.valueOf(thisAmount) + "\n";
-            result.append("\t").append(each.getMovie().getTitle()).append("\t").append(String.valueOf(thisAmount))
-                    .append("\n");
-            totalAmount += thisAmount;
-        }
-        //add footer lines
-//        result += "Amount owed is " + String.valueOf(totalAmount)
-//        + "\n";
-        result.append("Amount owed is ").append(String.valueOf(totalAmount)).append("\n");
-//        result += "You earned " + String.valueOf(frequentRenterPoints)
-//                + " frequent renter points";
-        result.append("You earned ").append(String.valueOf(frequentRenterPoints)).append(" frequent renter points");
+        StringBuilder result = new StringBuilder();
+        result.append("Rental Record for ").append(this.name).append('\n');
+        rentals.forEach(rental -> result.append('\t').append(rental.generateMovieResult()));
+        result.append("Amount owed is ").append(this.calculateTotalAmount()).append('\n');
+        result.append("You earned ").append(this.calculateFrequentRenterPoints()).append(" frequent renter points");
         return result.toString();
+    }
+
+    /**
+     * Calculate the charges for all rented movies.
+     * @return returns the total amount.
+     */
+    public double calculateTotalAmount() {
+        return rentals.stream().mapToDouble(Rental::calculateAmount).sum();
+    }
+
+    /**
+     * Calculate the frequent renter points for all rented movies.
+     * @return returns the total frequent renter points.
+     */
+    public int calculateFrequentRenterPoints() {
+        return rentals.stream().mapToInt(Rental::calculateFrequentRenterPoints).sum();
     }
 }
