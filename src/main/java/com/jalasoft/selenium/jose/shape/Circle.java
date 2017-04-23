@@ -15,16 +15,14 @@ public class Circle extends Shape {
     }
 
     /**
-     * This method calculates the area of the circle.
-     * @return returns the circle's area.
+     * {@inheritDoc}
      */
     public double calculateArea() {
         return Math.PI * this.radius * this.radius;
     }
 
     /**
-     * This methods calculates the perimeter of the circle.
-     * @return returns the circle's perimeter.
+     * {@inheritDoc}
      */
     public double calculatePerimeter() {
         return 2 * Math.PI * this.radius;

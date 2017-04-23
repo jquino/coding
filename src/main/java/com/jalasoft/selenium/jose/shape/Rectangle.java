@@ -18,16 +18,14 @@ public class Rectangle extends Shape {
     }
 
     /**
-     * This method calculates the area of the rectangle.
-     * @return returns the rectangle's area.
+     * {@inheritDoc}
      */
     public double calculateArea() {
         return side1 * side2;
     }
 
     /**
-     * This method calculates the perimeter of the rectangle.
-     * @return returns the rectangle's perimeter.
+     * {@inheritDoc}
      */
     public double calculatePerimeter() {
         return (2 * side1) + (2 * side2);

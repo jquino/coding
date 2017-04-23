@@ -15,7 +15,7 @@ public class CircleTest {
     private Shape circle;
 
     /**
-     * Before method.
+     * Creates a Circle object.
      */
     @Before
     public void setUp() {
@@ -24,10 +24,10 @@ public class CircleTest {
     }
 
     /**
-     * Test to verify the area.
+     * It should return the area of a circle when a positive radius is provided.
      */
     @Test
-    public void testCalculateAreaWhen() {
+    public void testCalculateAreaWhenTheRadiusIsPositive() {
         //When
         final double actualArea = circle.calculateArea();
 
@@ -37,10 +37,10 @@ public class CircleTest {
     }
 
     /**
-     * Test to verify the perimeter.
+     * It should return the perimeter of a circle when a positive radius is provided.
      */
     @Test
-    public void testCalculatePerimeterWhen() {
+    public void testCalculatePerimeterWhenTheRadiusIsPositive() {
         //When
         final double actualPerimeter = circle.calculatePerimeter();
 
