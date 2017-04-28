@@ -4,3 +4,4 @@
 /.nb-gradle/
 chromedriver.exe
 nbproject/
+classes
