@@ -8,13 +8,14 @@ import java.util.List;
  */
 class Customer {
     private String name;
-    private List<Rental> rentals = new ArrayList<>();
+    private List<Rental> rentals;
 
     /**
      * @param name This is the customer name.
      */
     Customer(final String name) {
         this.name = name;
+        rentals = new ArrayList<>();
     }
 
     /**
@@ -60,5 +61,13 @@ class Customer {
      */
     public int calculateFrequentRenterPoints() {
         return rentals.stream().mapToInt(Rental::calculateFrequentRenterPoints).sum();
+    }
+
+    /**
+     * Method that returns the list of rentals.
+     * @return rental list.
+     */
+    public List<Rental> getRentals() {
+        return this.rentals;
     }
 }
